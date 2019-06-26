@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="cn.com.buildwin.gosky.activities.MediaListActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0196FE">
+
+        <ImageButton
+            android:id="@+id/media_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@mipmap/back"
+            android:padding="12dp"
+            android:background="#00000000"/>
+
+        <TextView
+            android:id="@+id/media_selection_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/White"
+            android:textSize="18sp"/>
+
+        <ImageButton
+            android:id="@+id/media_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/media_delete"
+            android:background="#00000000"
+            android:padding="12dp"
+            android:layout_marginRight="3dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_toLeftOf="@+id/media_select_all_button"/>
+
+        <ImageButton
+            android:id="@+id/media_select_all_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/media_selectall"
+            android:background="#00000000"
+            android:padding="12dp"
+            android:layout_marginRight="3dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_toLeftOf="@+id/media_select_button"/>
+
+        <ImageButton
+            android:id="@+id/media_select_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/media_select"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="#00000000"
+            android:padding="12dp"
+            android:layout_marginRight="3dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/media_list_empty_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/media_list_list_empty_text"
+            android:textSize="20sp"/>
+
+        <!--ListView need to be wrapped in Layout, make sure EmptyView shows properly, Bug???-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/media_list_listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

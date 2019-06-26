@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="list_view_checked_color">#CAE9FE</color>
+    <color name="list_view_default_color">#FFFFFF</color>
+
+    <color name="transparent_dark">#77000000</color>
+
+    <!--Activity-->
+    <color name="main_theme_color">#0196FE</color>
+    <color name="main_background_color">#FFFFFF</color>
+
+    <!--Media list-->
+    <color name="title_text_color">#222121</color>
+    <color name="detail_text_color">#A3ADB5</color>
+
+</resources>

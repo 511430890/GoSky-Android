@@ -1,0 +1,95 @@
+<resources>
+
+    <string name="app_name">GoSky</string>
+
+    <string name="main_help_button_contentDescription">帮助</string>
+    <string name="main_setting_button_contentDescription">设置</string>
+    <string name="main_play_button_contentDescription">播放</string>
+
+    <string name="help_back_button_contentDescription">后退</string>
+    <string name="help_prev_page_button">上一页</string>
+    <string name="help_next_page_button">下一页</string>
+
+    <string name="setting_back_button_contentDescription">后退</string>
+    <string name="setting_first_header_title">飞行姿态参数</string>
+    <string name="setting_first_section_first_row_title">自动保存参数</string>
+    <string name="setting_first_section_second_row_title">重置参数</string>
+    <string name="setting_second_header_title">界面设置</string>
+    <string name="setting_second_section_first_row_title">右手模式</string>
+    <string name="setting_third_header_title">无线设置</string>
+    <string name="setting_third_section_first_row_title">重命名SSID</string>
+    <!---->
+    <string name="setting_alert_reset_parameter_success">重置参数成功</string>
+
+    <string name="rename_ssid_cancel_button">取消</string>
+    <string name="rename_ssid_save_button">保存</string>
+    <string name="rename_ssid_current_ssid_textView">当前SSID</string>
+    <string name="rename_ssid_new_ssid_textView">新的SSID</string>
+    <string name="rename_ssid_new_ssid_hint">在这里输入新的SSID</string>
+    <string name="rename_ssid_text_filter">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_</string>
+    <string name="rename_ssid_notice_textView">请使用 “A&#8211;Z”， “a&#8211;z”， “0&#8211;9”，和 “_”，最多24个字符</string>
+    <!---->
+    <string name="rename_hud_applying_change">正在应用</string>
+    <string name="rename_hud_resetting_board">正在重置设备</string>
+    <string name="rename_hud_collecting_information">正在搜集信息</string>
+    <string name="rename_alert_get_info_fail">获取信息失败</string>
+    <string name="rename_alert_set_ssid_fail">设置SSID失败</string>
+    <string name="rename_alert_reset_fail">重置设备失败</string>
+    <string name="rename_error_get_info">获取信息时发生错误</string>
+    <string name="rename_error_set_ssid">设置SSID时发生错误</string>
+    <string name="rename_error_reset">重置设备时发生错误</string>
+    <string name="rename_message_box_reset_title">提示</string>
+    <string name="rename_message_box_reset_message">重置设备成功。\r\n打开WiFi设置页连接新的SSID？</string>
+    <string name="rename_message_box_positive_title">是</string>
+    <string name="rename_message_box_negative_title">否</string>
+    <string name="rename_alert_change_another_ssid">请输入一个不同于当前的SSID</string>
+    <!---->
+    <string name="rename_message_box_notice_title">提示</string>
+    <string name="rename_message_box_notice_message">设置SSID成功。\r\n请给设备重新上电，然后等待半分钟生效。</string>
+    <string name="rename_message_box_notice_confirm_title">确定</string>
+    <string name="rename_message_box_notice2_title">提示</string>
+    <string name="rename_message_box_notice2_message">打开WiFi设置页连接新的SSID？</string>
+    <string name="rename_message_box_notice2_positive_title">是</string>
+    <string name="rename_message_box_notice2_negative_title">否</string>
+    <string name="rename_message_box_notice3_title">提示</string>
+    <string name="rename_message_box_notice3_message">系统不支持自动跳转到WiFi设置页，请手动打开以连接到新的SSID。</string>
+    <string name="rename_message_box_notice3_confirm_title">确定</string>
+
+    <string name="control_panel_alert_save_photo_success">截图保存在&#160;</string>
+    <string name="control_panel_alert_save_photo_fail">截图失败</string>
+    <string name="control_panel_alert_start_record_video">开始录制视频</string>
+    <string name="control_panel_alert_record_video_success">视频保存在&#160;</string>
+    <string name="control_panel_alert_record_video_fail">录制视频失败</string>
+    <string name="control_panel_alert_not_enough_disk_space">存储卡空间不足，停止录制\r\n视频保存在&#160;</string>
+    <string name="control_panel_alert_write_video_file_error">写入视频文件是发生错误，停止录制</string>
+
+    <string name="control_panel_alert_not_support_gyro">手机不支持这项功能</string>
+
+    <string name="control_panel_voice_guide">请讲：“前进”、“后退”、“左侧飞”、“右侧飞”、“起飞”、“降落”</string>
+
+    <string name="control_panel_insufficient_storage_alert">存储空间（%.2fMB）不足，无法开始录像</string>
+
+    <string name="control_panel_device_in_use">设备已被占用</string>
+
+    <string name="media_list_empty_list">媒体目录为空或不存在</string>
+    <string name="media_list_confirm_delete">即将删除选择的文件？</string>
+    <string name="media_list_delete_button">删除</string>
+    <string name="media_list_cancel_button">取消</string>
+
+    <string name="media_list_list_empty_text">列表为空</string>
+
+    <string name="image_viewer_confirm_delete">是否删除此文件？</string>
+    <string name="image_viewer_delete_button">删除</string>
+    <string name="image_viewer_cancel_button">取消</string>
+    <string name="image_viewer_delete_fail">删除文件失败！</string>
+    <string name="image_viewer_alert_deleted">文件已删除</string>
+
+    <string name="permission_denied_prefix">权限被拒绝：</string>
+    <string name="permission_denied_comma">，</string>
+    <string name="permission_denied_external_storage">访问存储器（拍照和录像）</string>
+    <string name="permission_denied_record_audio">录音（语音控制）</string>
+    <string name="permission_denied_title">权限被拒绝</string>
+    <string name="permission_denied_go_to_settings_record_audio">权限（麦克风）被拒绝。现在前往设置去赋予权限？</string>
+    <string name="permission_denied_go_to_settings_write_ext_storage">权限（存储）被拒绝。现在前往设置去赋予权限？</string>
+
+</resources>
