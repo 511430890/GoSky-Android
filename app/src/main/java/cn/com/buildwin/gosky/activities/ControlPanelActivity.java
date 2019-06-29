@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
+import android.hardware.usb.UsbDevice;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaScannerConnection;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.content.PermissionChecker;
@@ -22,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -35,6 +38,11 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jiangdg.usbcamera.UVCCameraHelper;
+import com.serenegiant.usb.CameraDialog;
+import com.serenegiant.usb.USBMonitor;
+import com.serenegiant.usb.widget.CameraViewInterface;
+
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,6 +51,7 @@ import buildwin.common.Utilities;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.com.buildwin.gosky.application.PlayerSelect;
 import cn.com.buildwin.gosky.widget.audiorecognizer.VoiceRecognizer;
 import cn.com.buildwin.gosky.widget.flycontroller.FlyController;
 import cn.com.buildwin.gosky.widget.flycontroller.FlyControllerDelegate;
@@ -65,7 +74,7 @@ import static tv.danmaku.ijk.media.widget.IjkVideoView.RTP_JPEG_PARSE_PACKET_MET
     所以代码中才使用Chronometer的GONE和INVISIBLE,还有setText。
  */
 
-public class ControlPanelActivity extends AppCompatActivity implements FlyControllerDelegate {
+public class ControlPanelActivity extends AppCompatActivity implements FlyControllerDelegate , CameraDialog.CameraDialogParent, CameraViewInterface.Callback{
 
     private static final String TAG = "ControlPanelActivity";
 
@@ -108,6 +117,8 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
     @BindView(R.id.video_view)          IjkVideoView mVideoView;
     @BindView(R.id.hud_view)            TableLayout mHudView;
 
+    private PlayerSelect playerSelect;
+
     // 控制台界面
     @BindView(R.id.control_panel_rudderViewContainer)   ViewGroup mRudderViewContainer;
     @BindView(R.id.control_panel_left_rudderView)       RudderView mLeftRudderView;
@@ -136,6 +147,17 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
     String permissionDeniedMsgRecordAudio;
     @BindString(R.string.permission_denied_go_to_settings_write_ext_storage)
     String permissionDeniedMsgAccessStorage;
+
+    // USB camera
+    @BindView(R.id.camera_view)
+    public View mTextureView;
+    private UVCCameraHelper mCameraHelper;
+    private CameraViewInterface mUVCCameraView;
+    private boolean isRequest;
+    private boolean isPreview;
+
+
+
 
     // 自动保存
     private boolean autosave;
@@ -421,17 +443,24 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
             }
         });
 
+        // step.1 initialize UVCCameraHelper
+        mTextureView.bringToFront();
+        mUVCCameraView = (CameraViewInterface) mTextureView;
+        mUVCCameraView.setCallback(this);
+        mCameraHelper = UVCCameraHelper.getInstance();
+        mCameraHelper.setDefaultPreviewSize(1280,720);
+        mCameraHelper.setDefaultFrameFormat(UVCCameraHelper.FRAME_FORMAT_MJPEG);
+        mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
+
+
         // handle arguments
         mVideoPath = Constants.RTSP_ADDRESS;
 
-        // init UI
-        mHudView.setVisibility(View.GONE);
+        playerSelect = new PlayerSelect(PlayerSelect.BUILDWIN);
 
-        // init player
         mVideoView.setRtpJpegParsePacketMethod(RTP_JPEG_PARSE_PACKET_METHOD);
         mVideoView.setRender(VIDEO_VIEW_RENDER);
         mVideoView.setAspectRatio(VIDEO_VIEW_ASPECT);
-        mVideoView.setHudView(mHudView);
 
         mVideoView.setOnPreparedListener(new IjkVideoView.IVideoView.OnPreparedListener() {
             @Override
@@ -1389,6 +1418,70 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
         });
     }
 
+    // USB camara
+    private UVCCameraHelper.OnMyDevConnectListener listener = new UVCCameraHelper.OnMyDevConnectListener() {
+
+        @Override
+        public void onAttachDev(UsbDevice device) {
+            showShortMsg(device.getDeviceName() + " onAttachDev");
+            // request open permission
+            if (!isRequest) {
+
+                isRequest = true;
+                if (mCameraHelper != null) {
+                    mCameraHelper.requestPermission(0);
+                }
+            }
+        }
+
+        @Override
+        public void onDettachDev(UsbDevice device) {
+            // close camera
+            if (isRequest) {
+                isRequest = false;
+                mCameraHelper.closeCamera();
+                showShortMsg(device.getDeviceName() + " is out");
+            }
+        }
+
+        @Override
+        public void onConnectDev(UsbDevice device, boolean isConnected) {
+            if (!isConnected) {
+                showShortMsg("fail to connect,please check resolution params");
+                isPreview = false;
+            } else {
+                isPreview = true;
+                showShortMsg("connecting");
+                // initialize seekbar
+                // need to wait UVCCamera initialize over
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Looper.prepare();
+                        if(mCameraHelper != null && mCameraHelper.isCameraOpened()) {
+                            //mSeekBrightness.setProgress(mCameraHelper.getModelValue(UVCCameraHelper.MODE_BRIGHTNESS));
+                           // mSeekContrast.setProgress(mCameraHelper.getModelValue(UVCCameraHelper.MODE_CONTRAST));
+                        }
+                        Looper.loop();
+                    }
+                }).start();
+            }
+        }
+
+        @Override
+        public void onDisConnectDev(UsbDevice device) {
+            showShortMsg("disconnecting");
+           // mVideoView.setVisibility(View.VISIBLE);
+        }
+    };
+    private void showShortMsg(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onBackPressed() {
         mBackPressed = true;
@@ -1404,6 +1497,9 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
     @Override
     protected void onStop() {
         super.onStop();
+        if (mCameraHelper != null) {
+            mCameraHelper.unregisterUSB();
+        }
 
 //        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
         if (!mVideoView.isBackgroundPlayEnabled()) {
@@ -1427,6 +1523,16 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
         mVideoView.setAspectRatio(VIDEO_VIEW_ASPECT);
         mVideoView.setVideoPath(mVideoPath);
         mVideoView.start();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // step.2 register USB event broadcast
+        if (mCameraHelper != null) {
+            mCameraHelper.registerUSB();
+        }
     }
 
     @Override
@@ -1935,5 +2041,40 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
             }
         }
         return false;
+    }
+
+    @Override
+    public USBMonitor getUSBMonitor() {
+        return mCameraHelper.getUSBMonitor();
+    }
+
+    @Override
+    public void onDialogResult(boolean canceled) {
+        if (canceled) {
+            showShortMsg("取消操作");
+        }
+    }
+
+    @Override
+    public void onSurfaceCreated(CameraViewInterface view, Surface surface) {
+        if (!isPreview && mCameraHelper.isCameraOpened()) {
+
+            mCameraHelper.startPreview(mUVCCameraView);
+          //  mCameraHelper.updateResolution(1280, 720);
+            isPreview = true;
+        }
+    }
+
+    @Override
+    public void onSurfaceChanged(CameraViewInterface view, Surface surface, int width, int height) {
+
+    }
+
+    @Override
+    public void onSurfaceDestroy(CameraViewInterface view, Surface surface) {
+        if (isPreview && mCameraHelper.isCameraOpened()) {
+            mCameraHelper.stopPreview();
+            isPreview = false;
+        }
     }
 }

@@ -17,7 +17,13 @@
             android:id="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/Black"
+            android:layout_gravity="center"
+            android:background="@color/Black" />
+
+        <com.serenegiant.usb.widget.UVCCameraTextureView
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
         <TableLayout
@@ -32,7 +38,7 @@
             android:id="@+id/control_panel_backgroundView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/con_bg"/>
+            android:background="@mipmap/con_bg" />
 
         <ProgressBar
             android:id="@+id/control_panel_progressBar"

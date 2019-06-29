@@ -1,4 +1,4 @@
-include ':ijkplayer-armv5'
+include ':ijkplayer-armv5', ':libusbcamera'
 include ':ijkplayer-armv7a'
 include ':ijkplayer-arm64'
 include ':ijkplayer-x86'
