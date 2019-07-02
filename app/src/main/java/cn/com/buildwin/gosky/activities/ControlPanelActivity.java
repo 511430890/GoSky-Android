@@ -450,6 +450,7 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
         mCameraHelper = UVCCameraHelper.getInstance();
         mCameraHelper.setDefaultPreviewSize(1280,720);
         mCameraHelper.setDefaultFrameFormat(UVCCameraHelper.FRAME_FORMAT_MJPEG);
+        //以上2个参数一定要在 initUSB之前。 但是总是第二次进去报错
         mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
 
 

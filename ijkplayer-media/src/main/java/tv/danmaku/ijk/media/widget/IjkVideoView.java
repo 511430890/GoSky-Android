@@ -1368,6 +1368,15 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "x264-option-tune", X264_TUNE_ZEROLATENCY);
             ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "x264-option-profile", X264_PROFILE_MAIN);
             ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "x264-params", "crf=20");
+
+            //rtsp 网络秒开
+            ijkMediaPlayer.setOption(1,"analyzemaxduration",100L);
+            ijkMediaPlayer.setOption(1,"probesize",10240L);
+
+//秒开后实时无延时
+            ijkMediaPlayer.setOption(1,"flush_packets",1L);
+            ijkMediaPlayer.setOption(4, "packet-buffering", 0L);//是否开启缓冲
+
         }
         mediaPlayer = ijkMediaPlayer;
 
