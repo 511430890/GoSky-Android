@@ -336,16 +336,21 @@ public class UVCCameraHelper {
 
     public void setDefaultPreviewSize(int defaultWidth,int defaultHeight) {
         if(mUSBMonitor != null) {
-            throw new IllegalStateException("setDefaultPreviewSize should be call before initMonitor");
-        }
+            mUSBMonitor.unregister();
+           mUSBMonitor=null;}
+         if(mUSBMonitor != null) {
+        throw new IllegalStateException("setDefaultPreviewSize should be call before initMonitor");
+    }
         this.previewWidth = defaultWidth;
         this.previewHeight = defaultHeight;
     }
 
     public void setDefaultFrameFormat(int format) {
         if(mUSBMonitor != null) {
+            mUSBMonitor.unregister();
+            if(mUSBMonitor != null) {
             throw new IllegalStateException("setDefaultFrameFormat should be call before initMonitor");
-        }
+        }}
         this.mFrameFormat = format;
     }
 
