@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="eye.app.activity"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application 
+        android:name=".MyApplication"
+        android:label="@string/app_name" 
+        android:icon="@drawable/ic_launcher"
+        android:theme="@android:style/Theme.Black">
+        <activity android:name="DeviceSearch"
+                  android:label="@string/app_name"> <!-- android:launchMode="singleTask" 去掉原因：按home键回到桌面点击图标会重启启动-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+
+            <!--</intent-filter>-->
+        </activity>
+        <activity 
+    	    android:name="Login"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="IpCfg"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="WifiCfg"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="VideoEncodeCfg"
+    	    android:launchMode="singleTask">
+    	</activity>
+		<activity
+			android:name=".SerialCfg"
+			android:launchMode="singleTask">
+		</activity>
+        <activity 
+    	    android:name="DevWifiSet"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="RemoteRecSearch"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="RemoteRecList"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="LocateRecList"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="MainMenu"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="MoreCfg"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="SDManage"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="SerialTest"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="DeviceType"
+    	    android:launchMode="singleTask">
+    	</activity>
+        <activity 
+    	    android:name="VideoPlayByOpengl"
+    	    android:launchMode="singleTask"
+			android:screenOrientation="landscape"
+    	    android:configChanges="orientation|keyboardHidden|screenSize">
+    	</activity>
+
+    </application>
+
+   	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.GET_TASKS"/> 
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:resizeable="true"
+        android:anyDensity="true" />
+</manifest> 

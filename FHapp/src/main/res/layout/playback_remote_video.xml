@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/pbStopTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SeekBarBrightNess"
+        android:layout_alignParentRight="true"
+        android:text="xxxx-xx-xx xx:xx:xx" />
+
+    <TextView
+        android:id="@+id/pbCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SeekBarBrightNess"
+        android:layout_alignParentLeft="true"
+        android:text="xxxx-xx-xx xx:xx:xx" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/btPBPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/pb_play"
+            android:text="" />
+
+        <ImageButton
+            android:id="@+id/btPBFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/pb_frame"
+            android:text="" />
+
+        <ImageButton
+            android:id="@+id/btPBSpeedDown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/pb_speed_down"
+            android:text="减速" />
+
+        <ImageButton
+            android:id="@+id/btPBSpeedUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/pb_speed_up"
+            android:text="加速" />
+
+        <ImageButton
+            android:id="@+id/btPBAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/pb_audio_off"
+            android:text="音频" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvForBUG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text=" " />
+ <!-- 这个VIEW放这防止三星手机红屏 内容为空格 -->
+
+    <TextView
+        android:id="@+id/tvRecTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pbCurrentTime"
+        android:layout_alignParentLeft="true"
+        android:text="播放速度: " />
+
+    <TextView
+        android:id="@+id/tvPBSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pbCurrentTime"
+        android:layout_toRightOf="@+id/tvRecTime"
+        android:text="正常" />
+
+    <TextView
+        android:id="@+id/tvPBStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pbStopTime"
+        android:layout_alignParentRight="true"
+        android:text="" />
+
+    <SeekBar
+        android:id="@+id/SeekBarBrightNess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignParentLeft="true" />
+
+</RelativeLayout>

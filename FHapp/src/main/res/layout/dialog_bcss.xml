@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+   <TextView
+       android:id="@+id/TextView01"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/tvContrast"
+       android:layout_below="@+id/tvContrast"
+       android:layout_marginTop="@dimen/dp_size_20"
+       android:text="对比度" />
+
+   <TextView
+       android:id="@+id/tvSaturation"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/TextView01"
+       android:layout_below="@+id/TextView01"
+       android:layout_marginTop="@dimen/dp_size_20"
+       android:text="饱和度" />
+
+   <TextView
+       android:id="@+id/tvSharpness"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/tvSaturation"
+       android:layout_below="@+id/tvSaturation"
+       android:layout_marginTop="@dimen/dp_size_20"
+       android:text="锐度" />
+
+   <SeekBar
+       android:id="@+id/SeekBarContrast"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/tvSaturation"
+       android:layout_alignParentRight="true"
+       android:layout_marginLeft="@dimen/dp_size_10"
+       android:layout_toRightOf="@+id/TextView01" />
+
+   <SeekBar
+       android:id="@+id/SeekBarSaturation"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/tvSharpness"
+       android:layout_alignLeft="@+id/SeekBarContrast"
+       android:layout_alignParentRight="true" />
+
+   <SeekBar
+       android:id="@+id/SeekBarSharpness"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/tvSharpness"
+       android:layout_alignLeft="@+id/SeekBarSaturation"
+       android:layout_alignParentRight="true" />
+
+   <SeekBar
+       android:id="@+id/SeekBarBrightNess"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/SeekBarContrast"
+       android:layout_alignParentRight="true"
+       android:layout_alignParentTop="true" />
+
+   <TextView
+       android:id="@+id/tvContrast"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/SeekBarBrightNess"
+       android:layout_alignParentLeft="true"
+       android:text="亮度" />
+
+      <LinearLayout
+          android:id="@+id/menu2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/tvSharpness"
+          android:layout_marginTop="18dp"
+          android:orientation="horizontal" >
+
+          <Button
+              android:id="@+id/btnSave"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="保存"
+              android:textSize="@dimen/text_size" />
+
+          <Button
+              android:id="@+id/btnCancel"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:text="取消"
+              android:textSize="@dimen/text_size" />
+      </LinearLayout>
+
+
+
+</RelativeLayout>

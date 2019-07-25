@@ -5,14 +5,14 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId 'cn.com.buildwin.gosky'
-        minSdkVersion 15
+        minSdkVersion 'o at least 1'
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         flavorDimensions "versionCode"
 
         ndk {
-            abiFilters "armeabi", "armeabi-v7a", "x86"
+            abiFilters  "armeabi-v7a", "arm64-v8a"
         }
     }
     buildTypes {
@@ -79,4 +79,5 @@ dependencies {
     all64Implementation project(':ijkplayer-x86')
     all64Implementation project(':ijkplayer-x86_64')
     implementation project(':libusbcamera')
+    implementation project(':FHapp')
 }

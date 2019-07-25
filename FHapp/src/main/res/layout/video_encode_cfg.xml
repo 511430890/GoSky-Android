@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Spinner
+        android:id="@+id/SpinnerCtrlType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SpinnerQuality"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SpinnerQuality" />
+
+    <EditText
+        android:id="@+id/etMaxBitRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etMaxFRate"
+        android:layout_alignParentRight="true"
+        android:numeric="integer"
+        android:layout_below="@+id/etMaxFRate" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dp_size_20" 
+        android:text="保存"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:id="@+id/etMaxFRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SpinnerCtrlType"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SpinnerCtrlType"
+        android:numeric="integer"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etIFrameInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etMaxBitRate"
+        android:layout_toRightOf="@+id/tvMaxBitRate"
+        android:numeric="integer"
+        android:ems="10" />
+
+    <Spinner
+        android:id="@+id/SpinnerDenoise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etIFrameInterval"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etIFrameInterval" />
+
+    <Spinner
+        android:id="@+id/SpinnerDeinter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SpinnerDenoise"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SpinnerDenoise" />
+
+    <Spinner
+        android:id="@+id/SpinnerRes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SpinnerStreamType"
+        android:layout_toRightOf="@+id/tvMaxBitRate" 
+        android:layout_marginTop="@dimen/dp_size_20"  />
+
+    <Spinner
+        android:id="@+id/SpinnerQuality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/SpinnerRes"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/SpinnerRes" />
+
+    <Spinner
+        android:id="@+id/SpinnerStreamType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/tvMaxBitRate" />
+
+    <TextView
+        android:id="@+id/tvStreamType"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/SpinnerStreamType"
+        android:layout_marginLeft="23dp"
+        android:text="码流类型" />
+
+    <TextView
+        android:id="@+id/tvRes"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvQuality"
+        android:layout_alignTop="@+id/SpinnerRes"
+        android:text="分辨率" />
+
+    <TextView
+        android:id="@+id/tvQuality"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvStreamType"
+        android:layout_alignTop="@+id/SpinnerQuality"
+        android:text="图像质量" />
+
+    <TextView
+        android:id="@+id/tvCtrlType"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvQuality"
+        android:layout_alignTop="@+id/SpinnerCtrlType"
+        android:text="码率类型" />
+
+    <TextView
+        android:id="@+id/tvMaxFRate"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvCtrlType"
+        android:layout_below="@+id/SpinnerCtrlType"
+        android:text="视频帧率" />
+
+    <TextView
+        android:id="@+id/tvMaxBitRate"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvMaxFRate"
+        android:layout_below="@+id/etMaxFRate"
+        android:text="码流上限（kbps）" />
+
+    <TextView
+        android:id="@+id/tvIFrameInterval"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvMaxBitRate"
+        android:layout_below="@+id/etMaxBitRate"
+        android:text="I帧间隔" />
+
+    <TextView
+        android:id="@+id/tvDenoise"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvIFrameInterval"
+        android:layout_below="@+id/etIFrameInterval"
+        android:text="去噪" />
+
+    <TextView
+        android:id="@+id/tvDeinter"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDenoise"
+        android:layout_alignTop="@+id/SpinnerDeinter"
+        android:text="去隔行" />
+
+</RelativeLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal" >
+    
+    <Button
+        android:id="@+id/btnSet"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_weight="1"
+        android:text="保存" />
+
+
+    </LinearLayout>
+
+    <RadioButton
+        android:id="@+id/radioManualIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioAutoIP"
+        android:checked="true"
+        android:text="使用下面的IP地址：" 
+        android:textSize="@dimen/text_size"/>
+
+    <TextView
+        android:id="@+id/tvDNS"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/dp_size_10"
+        android:layout_marginTop="@dimen/dp_size_30"
+        android:text="服务器端口：" />
+
+    <EditText
+        android:id="@+id/edtDNS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvDNS"
+        android:layout_toRightOf="@+id/tvDNS"
+        android:ems="10"
+        android:numeric="integer" />
+
+    <RadioButton
+        android:id="@+id/radioAutoIP"
+        android:textSize="@dimen/text_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edtDNS"
+        android:layout_marginTop="@dimen/dp_size_30"
+        android:text="自动获取IP地址" />
+
+    <TextView
+        android:id="@+id/tvPsk"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDNS"
+        android:layout_below="@+id/radioManualIP"
+        android:layout_marginTop="@dimen/dp_size_30"
+        android:text="IP地址：" />
+
+    <TextView
+        android:id="@+id/tvRecTypeName"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvPsk"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="@dimen/dp_size_30"
+        android:text="子网掩码：" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvPsk"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tvDNS"
+        android:digits="0123456789."
+        android:ems="10"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tvQuality"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvRecTypeName"
+        android:layout_below="@+id/tvRecTypeName"
+        android:layout_marginTop="@dimen/dp_size_30"
+        android:text="默认网关：" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvQuality"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tvDNS"
+        android:digits="0123456789."
+        android:ems="10"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etGateway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvQuality"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/tvDNS"
+        android:digits="0123456789."
+        android:ems="10"
+        android:singleLine="true" />
+
+</RelativeLayout>

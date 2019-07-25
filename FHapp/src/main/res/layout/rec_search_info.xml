@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:focusable="true"  
+    android:focusableInTouchMode="false"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvRecChan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/dp_size_10" 
+        android:layout_marginTop="@dimen/dp_size_30" 
+        android:text="录像通道:" 
+        android:textSize="@dimen/text_size"/>
+
+    <Button
+        android:id="@+id/btnRecSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edtStopTime"
+        android:layout_marginTop="48dp"
+        android:text="查询" 
+        android:textSize="@dimen/text_size"/>
+
+    <Spinner
+        android:id="@+id/spRecType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spRecChan"
+        android:layout_toRightOf="@+id/tvRecType" />
+
+    <Spinner
+        android:id="@+id/spRecLockF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spRecType"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spRecType" />
+
+    <Spinner
+        android:id="@+id/spRecChan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spRecType"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvRecChan" />
+
+    <TextView
+        android:id="@+id/tvRecType"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvRecChan"
+        android:layout_below="@+id/spRecChan"
+        android:text="录像类型:" />
+
+    <TextView
+        android:id="@+id/tvRecLockF"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvRecType"
+        android:layout_alignTop="@+id/spRecLockF"
+        android:text="锁定状态:" />
+
+    <EditText
+        android:id="@+id/edtStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spRecLockF"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spRecLockF"
+        android:editable="false"
+        android:ems="10"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tvStartTime"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/edtStartTime"
+        android:layout_toLeftOf="@+id/spRecLockF"
+        android:text="开始时间:" />
+
+    <EditText
+        android:id="@+id/edtStopTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edtStartTime"
+        android:layout_toRightOf="@+id/tvStopTime"
+        android:editable="false"
+        android:ems="10"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvStopTime"
+        android:textSize="@dimen/text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/edtStopTime"
+        android:layout_toLeftOf="@+id/edtStartTime"
+        android:text="结束时间:" />
+
+</RelativeLayout>

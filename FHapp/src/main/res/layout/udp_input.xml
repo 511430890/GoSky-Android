@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+	android:focusable="true"   
+	android:focusableInTouchMode="true"> <!-- 这两行是为了防止打开对话框时自动弹出键盘 -->
+
+    <TextView
+        android:id="@+id/tvDNS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/edtDNS"
+        android:layout_alignBottom="@+id/edtDNS"
+        android:layout_alignParentLeft="true"
+        android:text="端口:" />
+
+    <TextView
+        android:id="@+id/tvIpAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editIpAddr"
+        android:layout_alignBottom="@+id/editIpAddr"
+        android:layout_alignParentLeft="true"
+        android:text="IP地址:" />
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edtDNS"
+        android:layout_marginTop="50dp"
+        android:text="播放" />
+
+    <EditText
+        android:id="@+id/edtDNS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editIpAddr"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editIpAddr"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:numeric="integer"
+        android:singleLine="true"
+        android:text="8888" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editIpAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroup1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/radioGroup1"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:text="224.1.2.3" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/tvDeviceType"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="FH8610" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FH8620" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FH8810" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvDeviceType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/radioGroup1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="12dp"
+        android:text="设备类型:" />
+
+</RelativeLayout>

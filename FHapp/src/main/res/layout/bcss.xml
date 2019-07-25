@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+   <TextView
+       android:id="@+id/TextView01"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/tvContrast"
+       android:layout_below="@+id/tvContrast"
+       android:layout_marginTop="@dimen/dp_size_20"
+       android:text="对比度" />
+
+   <TextView
+       android:id="@+id/tvSaturation"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/TextView01"
+       android:layout_below="@+id/TextView01"
+       android:layout_marginTop="@dimen/dp_size_20"
+       android:text="饱和度" />
+
+   <TextView
+       android:id="@+id/tvSharpness"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/tvSaturation"
+       android:layout_below="@+id/tvSaturation"
+       android:layout_marginTop="@dimen/dp_size_20"
+       android:text="锐度" />
+
+   <SeekBar
+       android:id="@+id/SeekBarContrast"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/tvSaturation"
+       android:layout_marginLeft="@dimen/dp_size_10"
+       android:layout_toLeftOf="@+id/tvContrastVal"
+       android:layout_toRightOf="@+id/TextView01" />
+
+   <SeekBar
+       android:id="@+id/SeekBarSaturation"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/tvSharpness"
+       android:layout_alignLeft="@+id/SeekBarContrast"
+       android:layout_alignRight="@+id/SeekBarContrast" />
+
+   <SeekBar
+       android:id="@+id/SeekBarSharpness"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/tvSharpness"
+       android:layout_alignLeft="@+id/SeekBarSaturation"
+       android:layout_alignRight="@+id/SeekBarSaturation" />
+
+   <SeekBar
+       android:id="@+id/SeekBarBrightNess"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/SeekBarContrast"
+       android:layout_alignParentTop="true"
+       android:layout_toLeftOf="@+id/tvBrightnessVal" />
+
+   <TextView
+       android:id="@+id/tvContrast"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/SeekBarBrightNess"
+       android:layout_alignParentLeft="true"
+       android:text="亮度" />
+
+      <TextView
+          android:id="@+id/tvBrightnessVal"
+          android:layout_width="30dp"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/SeekBarBrightNess"
+          android:layout_alignParentRight="true"
+          android:layout_alignParentTop="true"
+          android:gravity="center"
+          android:text="0" />
+
+      <TextView
+          android:id="@+id/tvContrastVal"
+          android:layout_width="30dp"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/SeekBarContrast"
+          android:layout_alignLeft="@+id/tvBrightnessVal"
+          android:layout_alignParentRight="true"
+          android:layout_alignTop="@+id/SeekBarContrast"
+          android:gravity="center"
+          android:text="0" />
+
+      <TextView
+          android:id="@+id/tvSaturationVal"
+          android:layout_width="30dp"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/SeekBarSaturation"
+          android:layout_alignParentRight="true"
+          android:layout_alignTop="@+id/SeekBarSaturation"
+          android:gravity="center"
+          android:text="0" />
+
+      <TextView
+          android:id="@+id/tvSharpnessVal"
+          android:layout_width="30dp"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/SeekBarSharpness"
+          android:layout_alignParentRight="true"
+          android:layout_alignTop="@+id/SeekBarSharpness"
+          android:gravity="center"
+          android:text="0" />
+</RelativeLayout>

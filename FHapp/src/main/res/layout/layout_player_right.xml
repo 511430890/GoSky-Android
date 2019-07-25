@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical" >
+    <LinearLayout
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnEyeShot"
+	        android:background="@drawable/btn_eye_shot"
+	        style="@style/TopBtn"/>
+    </LinearLayout>
+
+    <LinearLayout
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnCorrect"
+	        android:background="@drawable/btn_eye_corrent"
+	        style="@style/TopBtn"/>
+    </LinearLayout>
+
+    <LinearLayout
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnEyeType"
+	        android:background="@drawable/btn_eye_type_top"
+	        style="@style/TopBtn"/>
+    </LinearLayout>
+
+</LinearLayout>

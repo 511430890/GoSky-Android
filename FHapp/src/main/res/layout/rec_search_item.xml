@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/recThumbnail"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/recSize"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/video" />
+    
+    
+    
+    <TextView
+        android:id="@+id/tvChanName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPsk"
+        android:layout_alignBottom="@+id/tvPsk"
+        android:layout_toRightOf="@+id/tvPsk"
+        android:text="x" 
+        android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/tvRecTypeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="xx"
+        android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/tvLockFlagName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvLockFlag"
+        android:layout_alignBottom="@+id/tvLockFlag"
+        android:layout_toRightOf="@+id/tvLockFlag"
+        android:text="xx" 
+        android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="7dp"
+        android:layout_toRightOf="@+id/startTime"
+        android:text="录像类型:" 
+       android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/tvLockFlag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/stopTime"
+        android:layout_alignBottom="@+id/stopTime"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="锁定状态:" 
+        android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvLockFlagName"
+        android:layout_alignBottom="@+id/tvLockFlagName"
+        android:layout_alignLeft="@+id/tvPsk"
+        android:text="大小:" 
+        android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/tvDataSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/tvChanName"
+        android:text="xxx" 
+        android:textSize="@dimen/text_size_small"/>
+
+    <TextView
+        android:id="@+id/tvPsk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tvRecTypeName"
+        android:text="通道:"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/startTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/stopTime"
+        android:layout_alignParentTop="true"
+        android:text="xxxx-xx-xx xx:xx:xx"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/stopTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recThumbnail"
+        android:layout_toRightOf="@+id/recThumbnail"
+        android:text="xxxx-xx-xx xx:xx:xx"
+        android:textSize="@dimen/text_size_small" />
+
+</RelativeLayout>

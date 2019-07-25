@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   <TextView
+       android:id="@+id/tvPreStreamInfo"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+       android:layout_marginRight="10dp"
+       android:text=""
+       android:gravity="right" />
+
+<RelativeLayout
+    android:id="@+id/menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+   <LinearLayout
+       android:id="@+id/menu2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:orientation="vertical" >
+
+       <Button
+           android:id="@+id/btnRemoteRec"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="远程录像"
+           android:textSize="@dimen/text_size"/>
+
+        <Button
+            android:id="@+id/btnRemoteShot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="远程截图"
+            android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnLocateRec"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="本地录像"
+           android:textSize="@dimen/text_size"/>
+        <Button
+            android:id="@+id/btnLocateShot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="本地截图"
+            android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnAudio"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="开启音频"
+           android:textSize="@dimen/text_size"/>
+        <Button
+            android:id="@+id/btnTalk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="开启对讲"
+            android:textSize="@dimen/text_size"/>
+	   <Button
+	       android:id="@+id/btnStreamChange"
+	       android:textSize="@dimen/text_size"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+			android:layout_weight="1"
+	       android:text="切换码流" />
+	   <Button
+	       android:id="@+id/btnSerial"
+	       android:textSize="@dimen/text_size"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+			android:layout_weight="1"
+	       android:text="串口通讯" />
+	   <Button
+	       android:id="@+id/btnBCSS"
+	       android:textSize="@dimen/text_size"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+			android:layout_weight="1"
+	       android:text="色彩调节" />
+	   <Button
+	       android:id="@+id/btnEyeMenu"
+	       android:textSize="@dimen/text_size"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+			android:layout_weight="1"
+	       android:text="鱼眼菜单" />
+
+   </LinearLayout>
+
+   <TextView
+       android:id="@+id/tvMessage"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_centerHorizontal="true"
+       android:text="" />
+
+   <TextView
+       android:id="@+id/tvRecTime"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_marginBottom="@dimen/dp_size_20"
+       android:layout_toRightOf="@+id/menu2"
+       android:text="00:00:00"
+       android:textColor="#FF0000" />
+	</RelativeLayout>
+
+
+
+	<RelativeLayout
+		android:id="@+id/menu11"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/menu">
+
+		<LinearLayout
+			android:id="@+id/menu222"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:orientation="vertical" >
+
+		<Button
+			android:id="@+id/btnRemoteRec111"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="XXXXX"
+			android:textSize="@dimen/text_size"/>
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+</RelativeLayout>

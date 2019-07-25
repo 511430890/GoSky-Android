@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_eyeMenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   <LinearLayout
+       android:id="@+id/eyeviewMenu"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/indicator"
+       android:orientation="vertical"
+       android:visibility="gone">
+
+       <Button
+           android:id="@+id/btnMultipleMode"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="混杂模式" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnPlotCorrect"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="标图矫正" 
+           android:textSize="@dimen/text_size"/>
+       
+       <Button
+           android:id="@+id/btnPlotEye"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="标图鱼眼" 
+           android:textSize="@dimen/text_size"/>
+       
+       <Button
+           android:id="@+id/btnHangingWideCorrect"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="广角矫正" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnHangingWide"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="壁挂广角" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnHangingCorrect"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="壁挂矫正" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnHangingEye"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="壁挂鱼眼" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnTopViewDoubleExpand"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="顶视双展" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnTopViewSingleExpand"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="顶视单展" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnTopViewCylinder"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="顶视圆筒" 
+           android:textSize="@dimen/text_size"/>
+       
+       <Button
+           android:id="@+id/btnTopViewEyeVR"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="顶视VR" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnTopViewEye4Screen"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="顶视四屏" 
+           android:textSize="@dimen/text_size"/>
+       <Button
+           android:id="@+id/btnTopViewEye"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="顶视鱼眼" 
+           android:textSize="@dimen/text_size"/>
+
+
+ 
+   </LinearLayout>
+    <com.app.util.IndicatorView
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+    <Button
+        android:id="@+id/btnEyeType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCorrect"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/eyeviewMenu"
+        android:text="类型"
+        android:textSize="@dimen/text_size" />
+    <Button
+        android:id="@+id/btnCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnShot"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/eyeviewMenu"
+        android:text="校准"
+        android:textSize="@dimen/text_size" />
+    <Button
+        android:id="@+id/btnShot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnHide"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/eyeviewMenu"
+        android:text="截图"
+        android:textSize="@dimen/text_size" />
+    
+    <Button
+        android:id="@+id/btnHide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/indicator"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/eyeviewMenu"
+        android:text="收起"
+        android:textSize="@dimen/text_size" />
+
+</RelativeLayout>

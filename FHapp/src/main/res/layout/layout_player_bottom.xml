@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal" >
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnTopViewEye"
+	        android:background="@drawable/btn_top_eye"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+    
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnTopViewEye4Screen"
+	        android:background="@drawable/btn_top_eye_4sceen"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+	<LinearLayout
+		style="@style/TopLinearLayout">
+		<com.app.util.ETButton
+			android:id="@+id/btnTopViewEyeVR"
+			android:background="@drawable/btn_top_eye_vr"
+			style="@style/BottomBtn"/>
+	</LinearLayout>
+
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnTopViewCylinder"
+	        android:background="@drawable/btn_top_cylinder"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnTopViewSingleExpand"
+	        android:background="@drawable/btn_top_single_expand"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnTopViewDoubleExpand"
+	        android:background="@drawable/btn_top_double_expand"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnHangingEye"
+	        android:background="@drawable/btn_hanging_eye"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnHangingCorrect"
+	        android:background="@drawable/btn_hanging_correct"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+	<LinearLayout
+		style="@style/TopLinearLayout">
+		<com.app.util.ETButton
+			android:id="@+id/btnHangingEyeVR"
+			android:background="@drawable/btn_hanging_eye_vr"
+			style="@style/BottomBtn"/>
+	</LinearLayout>
+
+    <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnHangingWide"
+	        android:background="@drawable/btn_hanging_wide"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+     <LinearLayout 
+		style="@style/TopLinearLayout">
+        <com.app.util.ETButton
+	        android:id="@+id/btnHangingWideCorrect"
+	        android:background="@drawable/btn_hanging_wide_correct"
+	        style="@style/BottomBtn"/>
+    </LinearLayout>
+
+
+	<LinearLayout
+		style="@style/TopLinearLayout">
+		<com.app.util.ETButton
+			android:id="@+id/btnPlotEye"
+			android:background="@drawable/btn_plot_eye"
+			style="@style/BottomBtn"/>
+	</LinearLayout>
+
+	<LinearLayout
+		style="@style/TopLinearLayout">
+		<com.app.util.ETButton
+			android:id="@+id/btnPlotCorrect"
+			android:background="@drawable/btn_plot_correct"
+			style="@style/BottomBtn"/>
+	</LinearLayout>
+
+
+	<LinearLayout
+		style="@style/TopLinearLayout">
+		<com.app.util.ETButton
+			android:id="@+id/btnMultipleMode"
+			android:background="@drawable/btn_multiple_mode"
+			style="@style/BottomBtn"/>
+	</LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+android {
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: '*.jar')
+    }
+
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+     //   applicationId "eye.app.activity"
+        minSdkVersion 15
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ["src/main/libs"];
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+//        debug {
+//            signingConfig signingConfigs.fullhan
+//        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+}
+
+dependencies {
+}

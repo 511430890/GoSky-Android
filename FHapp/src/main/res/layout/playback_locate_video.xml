@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   <TextView
+       android:id="@+id/tvPBStreamInfo"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+       android:layout_marginRight="10dp"
+       android:text=""
+       android:gravity="right" />
+
+	<TextView
+	    android:id="@+id/tvForBUG"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:text=" "/><!-- 这个VIEW放这防止三星手机红屏 内容为空格 -->
+    
+    <RelativeLayout
+        android:id="@+id/control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    <SeekBar
+        android:id="@+id/seekBarProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/pbStopTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnPBSpeedUp"
+        android:layout_alignParentRight="true"
+        android:text="00:00:00"
+        android:textSize="@dimen/text_size"  />
+
+    <TextView
+        android:id="@+id/tvStreamType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pbStopTime"
+        android:layout_alignLeft="@+id/pbStopTime"
+        android:layout_toLeftOf="@+id/pbStopTime"
+        android:text="/" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pbStopTime"
+        android:layout_alignBottom="@+id/pbStopTime"
+        android:layout_toLeftOf="@+id/pbStopTime"
+        android:text="/" />
+
+    <TextView
+        android:id="@+id/pbCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toLeftOf="@+id/textView2"
+        android:text="00:00:00"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/tvPBSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pbStopTime"
+        android:layout_alignParentRight="true"
+        android:text="" />
+
+    <ImageView
+        android:id="@+id/btnPBPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBarProgress"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/dp_size_5" 
+        android:scaleType="fitXY"
+        android:src="@android:drawable/ic_media_play" />
+
+    <ImageView
+        android:id="@+id/btnPBSpeedDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBarProgress"
+        android:layout_marginLeft="@dimen/dp_size_5" 
+        android:layout_toRightOf="@+id/btnPBPlay"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/ic_media_rew" />
+
+    <ImageView
+        android:id="@+id/btnPBSpeedUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBarProgress"
+        android:layout_marginLeft="@dimen/dp_size_5" 
+        android:layout_toRightOf="@+id/btnPBSpeedDown"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/ic_media_ff" />
+	</RelativeLayout>
+
+</RelativeLayout>
