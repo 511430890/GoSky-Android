@@ -19,6 +19,9 @@ public class Settings {
             "cn.com.buildwin.gosky.altitude_hold";
     private static final String PARAMETER_SETTING_SPEED_LIMIT =
             "cn.com.buildwin.gosky.speed_limit";
+    private static final String PARAMETER_SETTING_720P =
+            "cn.com.buildwin.gosky.720p";
+
 
     static private Settings instance = null;
     private Context mContext;
@@ -108,6 +111,10 @@ public class Settings {
         putInt(PARAMETER_SETTING_SPEED_LIMIT, speedLimit);
     }
 
+    public void saveParameterIs720P(boolean cam) {
+        putBoolean(PARAMETER_SETTING_720P, cam);
+    }
+
     // ---------------- Get ----------------
 
 //    private boolean getBoolean(String s) {
@@ -152,6 +159,11 @@ public class Settings {
 
     public int getParameterForSpeedLimit() {
         return getInt(PARAMETER_SETTING_SPEED_LIMIT);
+    }
+
+    public boolean getParameterForIs720p() {
+        SharedPreferences settings = mContext.getSharedPreferences(Constants.PREFS_NAME, 0);
+        return settings.getBoolean(PARAMETER_SETTING_720P, true); // Default is false
     }
 
 }

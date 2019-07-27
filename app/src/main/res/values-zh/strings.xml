@@ -18,6 +18,7 @@
     <string name="setting_second_section_first_row_title">右手模式</string>
     <string name="setting_third_header_title">无线设置</string>
     <string name="setting_third_section_first_row_title">重命名SSID</string>
+    <string name="setting_4_section_first_row_title">预览参数</string>
     <!---->
     <string name="setting_alert_reset_parameter_success">重置参数成功</string>
 

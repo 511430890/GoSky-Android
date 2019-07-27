@@ -34,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.com.buildwin.gosky.R;
+import cn.com.buildwin.gosky.application.Settings;
 import eye.app.activity.VideoPlayByOpengl;
 
 public class HomeActivity extends AppCompatActivity {
@@ -129,7 +130,24 @@ public class HomeActivity extends AppCompatActivity {
                     { FHSDK.setCryptKey("guanxukj@fh8620."); }
 
                     PlayInfo.userID = FHSDK.login(GetGatawayIP(), 8888, "guanxukeji", "gxrdw60");
-                    PlayInfo.streamType = 2;
+                    if (Settings.getInstance(this).getParameterForIs720p())
+                    {
+                       if(2==FHSDK.getDeviceFlag(PlayInfo.userID)) //8620
+                        {PlayInfo.streamType = 1;}
+                        else if (4==FHSDK.getDeviceFlag(PlayInfo.userID)) //8632
+                       {PlayInfo.streamType = 2;}
+
+                    }
+                    else
+                    {
+                        if(2==FHSDK.getDeviceFlag(PlayInfo.userID)) //8620
+                        {PlayInfo.streamType = 2;} //VGA
+                        else if (4==FHSDK.getDeviceFlag(PlayInfo.userID)) //8632
+                        {PlayInfo.streamType = 1;}// 1080P
+                    }
+
+
+
                     Intent i = new Intent(HomeActivity.this, VideoPlayByOpengl.class);
                     startActivity(i);
                     Toast.makeText(this, GetGatawayIP(), Toast.LENGTH_SHORT).show();

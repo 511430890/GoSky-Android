@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
@@ -41,14 +42,16 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     @BindString(R.string.setting_first_header_title)    String header1;
     @BindString(R.string.setting_second_header_title)   String header2;
     @BindString(R.string.setting_third_header_title)    String header3;
+    @BindString(R.string.setting_4_section_first_row_title)    String header4;
 
     @BindString(R.string.setting_first_section_first_row_title)     String title1_1;
     @BindString(R.string.setting_first_section_second_row_title)    String title1_2;
     @BindString(R.string.setting_second_section_first_row_title)    String title2_1;
     @BindString(R.string.setting_third_section_first_row_title)     String title3_1;
+    String title4_1 = "720P";
 
     private boolean bAutosave;
-
+    private boolean is720P;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +70,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         headers = new String[] {
                 header1,
                 header2,
-//                header3,  // uncomment when necessary
+               header3,  // uncomment when necessary
+                header4,
         };
         titles = new String[][] {
                 new String[] {
@@ -77,9 +81,12 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 new String[] {
                         title2_1,
                 },
-//                new String[] {
-//                        title3_1,    // uncomment when necessary
-//                }
+                new String[] {
+                        title3_1,    // uncomment when necessary
+                },
+                new String[] {
+                        title4_1,
+                }
         };
 
         // Back Button
@@ -122,6 +129,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         mListView.setAdapter(adapter);
 
         bAutosave = Settings.getInstance(this).getParameterForAutosave();
+        is720P = Settings.getInstance(this).getParameterForIs720p();
+
     }
 
     @Override
@@ -252,6 +261,19 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                     else if (section == 2) {
                         imageButton.setVisibility(View.INVISIBLE);
                     }
+                    else if (section == 3) {
+                        // Row 0
+                        if (row == 0) {
+                            // TODO: 720p
+                            if (is720P) {
+                                imageButton.setImageResource(R.mipmap.switch_enable);
+                            } else {
+                                imageButton.setImageResource(R.mipmap.switch_disable);
+                            }
+                            // Save setting
+                            imageButton.setOnClickListener(SettingActivity.this);
+                        }
+                    }
                     break;
             }
 
@@ -276,6 +298,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         boolean autoSave = Settings.getInstance(this).getParameterForAutosave();
         boolean rightHandMode = Settings.getInstance(this).getParameterForRightHandMode();
+        is720P = Settings.getInstance(this).getParameterForIs720p();
 
         int tag = (int)v.getTag();
         IndexPath indexPath = new IndexPath(tag);
@@ -316,7 +339,23 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 // Save setting
                 Settings.getInstance(this).saveParameterForRightHandMode(rightHandMode);
             }
+        } else if (section == 3) {
+            // Row 0
+            if (row == 0) {
+                // TODO: 720p
+               is720P = !is720P;
+                if (is720P) {
+                    ((ImageButton)v).setImageResource(R.mipmap.switch_enable);
+                } else {
+                    ((ImageButton)v).setImageResource(R.mipmap.switch_disable);
+                }
+                // Save setting
+                Settings.getInstance(this).saveParameterIs720P(is720P);
+            }
         }
+
+
+
     }
 
     /**

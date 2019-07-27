@@ -18,6 +18,7 @@
     <string name="setting_second_section_first_row_title">Right hand mode</string>
     <string name="setting_third_header_title">WIRELESS SETTINGS</string>
     <string name="setting_third_section_first_row_title">Rename SSID</string>
+    <string name="setting_4_section_first_row_title">预览</string>
     <!---->
     <string name="setting_alert_reset_parameter_success">Reset parameters success</string>
 
