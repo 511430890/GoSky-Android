@@ -130,20 +130,27 @@ public class HomeActivity extends AppCompatActivity {
                     { FHSDK.setCryptKey("guanxukj@fh8620."); }
 
                     PlayInfo.userID = FHSDK.login(GetGatawayIP(), 8888, "guanxukeji", "gxrdw60");
+
+                    int deviceFlag = FHSDK.getDeviceFlag(PlayInfo.userID);
                     if (Settings.getInstance(this).getParameterForIs720p())
                     {
-                       if(2==FHSDK.getDeviceFlag(PlayInfo.userID)) //8620
+                       if(2== deviceFlag) //8620
                         {PlayInfo.streamType = 1;}
-                        else if (4==FHSDK.getDeviceFlag(PlayInfo.userID)) //8632
+                        else if (4== deviceFlag) //8852
                        {PlayInfo.streamType = 2;}
+                       else if (5== deviceFlag) //8632
+                       {PlayInfo.streamType = 2;}
+
 
                     }
                     else
                     {
-                        if(2==FHSDK.getDeviceFlag(PlayInfo.userID)) //8620
+                        if(2== deviceFlag) //8620
                         {PlayInfo.streamType = 2;} //VGA
-                        else if (4==FHSDK.getDeviceFlag(PlayInfo.userID)) //8632
+                        else if (4== deviceFlag) //8852
                         {PlayInfo.streamType = 1;}// 1080P
+                        else if (5== deviceFlag) //8632
+                        {PlayInfo.streamType = 1;}
                     }
 
 

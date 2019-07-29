@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId 'cn.com.buildwin.gosky'
+        applicationId 'cn.com.leesoo.gxsky'
         minSdkVersion 'o at least 1'
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
