@@ -2,7 +2,8 @@
 
 buildscript {
     repositories {
-        jcenter()
+       // jcenter()
+        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
         maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
         maven {
             url 'https://maven.google.com/'
@@ -11,7 +12,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:3.4.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -21,7 +22,8 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+       // jcenter()
+        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
         maven { url "https://jitpack.io" }
         maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
         google()

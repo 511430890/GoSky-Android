@@ -130,6 +130,15 @@ public class HomeActivity extends AppCompatActivity {
                     { FHSDK.setCryptKey("guanxukj@fh8620."); }
 
                     PlayInfo.userID = FHSDK.login(GetGatawayIP(), 8888, "guanxukeji", "gxrdw60");
+                    if(PlayInfo.userID==0){ //多用户登陆
+                        PlayInfo.userID = FHSDK.login(GetGatawayIP(), 8888, "guanxukeji2", "gxrdw602");
+                        if(PlayInfo.userID==0){ //改端口
+                            PlayInfo.userID = FHSDK.login(GetGatawayIP(), 8866, "guanxukeji2", "gxrdw602");
+                            }
+
+                    }
+
+                    PlayInfo.decodeType    = 1; // 硬解
 
                     int deviceFlag = FHSDK.getDeviceFlag(PlayInfo.userID);
                     if (Settings.getInstance(this).getParameterForIs720p())

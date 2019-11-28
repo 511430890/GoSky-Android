@@ -2,87 +2,99 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal" >
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnRemoteRec"
-	        android:background="@drawable/btn_remote_rec_off"
-	        style="@style/TopBtn"/>
-    </LinearLayout>
-    
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnRemoteShot"
-	        android:background="@drawable/btn_remote_shot"
-	        style="@style/TopBtn"/>
+    android:gravity="center">
+
+	<LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnRemoteRec"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_remote_rec_off"
+			android:scaleType="fitCenter" />
+		<!--录制时间-->
+		<Chronometer
+			android:id="@+id/control_panel_chronometer"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="-18dp"
+			android:layout_marginLeft="17dp"
+			android:textColor="#0511FC"
+			android:textSize="15sp" />
+	</LinearLayout>
+
+	<LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnRemoteShot"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_remote_shot" />
     </LinearLayout>
 
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnLocateRec"
-	        android:background="@drawable/btn_locate_rec_off"
-	        style="@style/TopBtn"/>
+    <LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnLocateRec"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_locate_rec_off" />
     </LinearLayout>
 
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnLocateShot"
-	        android:background="@drawable/btn_shot"
-	        style="@style/TopBtn"/>
+    <LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnLocateShot"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_shot" />
     </LinearLayout>
 
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnAudio"
-	        android:background="@drawable/btn_a_off"
-	        style="@style/TopBtn"/>
+    <LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnAudio"
+			style="@style/TopBtn"
+			android:src="@drawable/button_rotate_screenfh" />
     </LinearLayout>
 
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnTalk"
-	        android:background="@drawable/btn_talk_off"
-	        style="@style/TopBtn"/>
+    <LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnTalk"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_talk_off" />
     </LinearLayout>
 
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnSerial"
-	        android:background="@drawable/btn_serial"
-	        style="@style/TopBtn"/>
+    <LinearLayout style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnSerial"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_serial" />
     </LinearLayout>
 
-    <LinearLayout 
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnBCSS"
-	        android:background="@drawable/btn_bcss"
-	        style="@style/TopBtn"/>
-    </LinearLayout>
+    <LinearLayout style="@style/TopLinearLayout">
 
-     <LinearLayout
-		 android:id="@+id/btnEyeMenuParent"
-		style="@style/TopLinearLayout">
-        <com.app.util.ETButton
-	        android:id="@+id/btnEyeMenu"
-	        android:background="@drawable/btn_menu_eye"
-	        style="@style/TopBtn"/>
+		<com.app.util.ETButton
+			android:id="@+id/btnBCSS"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_bcss" />
     </LinearLayout>
 
 	<LinearLayout
-		android:visibility="gone"
+		android:id="@+id/btnEyeMenuParent"
 		style="@style/TopLinearLayout">
+
+		<com.app.util.ETButton
+			android:id="@+id/btnEyeMenu"
+			style="@style/TopBtn"
+			android:background="@drawable/btn_menu_eye" />
+    </LinearLayout>
+
+	<LinearLayout
+		style="@style/TopLinearLayout"
+		android:visibility="gone">
+
 		<com.app.util.ETButton
 			android:id="@+id/btnHide"
-			android:background="@drawable/btn_hide_off"
-			style="@style/TopBtn"/>
+			style="@style/TopBtn"
+			android:background="@drawable/btn_hide_off" />
 	</LinearLayout>
 </LinearLayout>

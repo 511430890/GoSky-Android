@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -31,6 +32,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -46,6 +48,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -55,6 +58,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import eye.app.activity.BuildConfig;
 import eye.app.activity.MoreCfg;
 import eye.app.activity.R;
 import com.android.opengles.GLFrameRenderer;
@@ -71,7 +75,7 @@ import com.fh.lib.Define.SerialDataCallBackInterface;
 import com.fh.lib.FHSDK;
 import com.fh.lib.PlayInfo;
 
-public class VideoPlayView {
+public class VideoPlayView  {
 
 	private static final int NOTIFY_TYPE_SHOT_FileName = 0x00;
 	private static final int NOTIFY_TYPE_SHOT_Fail     = 0x01;
@@ -165,10 +169,13 @@ public class VideoPlayView {
 	private ETButton btnPlotEye;            //标图鱼眼
 	private ETButton btnPlotCorrect;        //标图矫正
 	private ETButton btnMultipleMode;       //混杂模式
+	private Chronometer mChronometer;
 
 	private LinearLayout eyeviewMenu;
 	private String[] ModeList;
 	private IndicatorView indicatorView;
+	public Define myDefine;
+	Define.SerialPortCfg SerialCfg;
 	public VideoPlayView(Context mContext){
 		this.mContext =  mContext;
 	}
@@ -215,6 +222,7 @@ public class VideoPlayView {
 		{
 
 			view = inflater.inflate(R.layout.layout_play_main, null);
+			//view = inflater.inflate(R.layout.control_panel_top_menubar, null);
 
 			// TODO: //去掉按键布局
 			mLayout.addView(view);
@@ -295,12 +303,13 @@ public class VideoPlayView {
 			//tvBrightnessVal, tvContrastVal, tvSaturationVal, tvSharpnessVal;
 
 			tvStreamInfo = (TextView)view.findViewById(R.id.tvPreStreamInfo);
+			mChronometer = view.findViewById(R.id.control_panel_chronometer);
 
 			bcssObj = (new Define()).new BCSS();
 			bcssDefObj = (new Define()).new BCSS();
 
 			layoutMenu=(RelativeLayout)view.findViewById(R.id.layout_top);
-			layoutMenu.setVisibility(View.GONE);
+			layoutMenu.setVisibility(View.VISIBLE);
 
 			layoutEyeMenu = (LinearLayout)view.findViewById(R.id.layout_right);
 			layoutEyeMenu.setVisibility(View.GONE);
@@ -338,6 +347,34 @@ public class VideoPlayView {
 		}
 		createHandler();
 		FHSDK.registerNotifyCallBack(dataFun);
+	}
+
+	public void senddata(String s){
+
+		int serialPort = 1;
+		int serialIndex = 1;
+		int transMode = 1; // 0 tcp  1 udp
+		serialHandle = FHSDK.startSerialEx(PlayInfo.userID, serialPort, serialIndex, transMode, true, serialFun);
+		if (0 == serialHandle)
+		{
+			ActivtyUtil.openToast(mContext,"创建句柄失败");
+			return;
+		}
+		byte[] sendData1 = new byte[0];
+		try {
+			sendData1 = HexStringToBytes(s);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+		myDefine = new Define();
+		SerialCfg =  myDefine.new SerialPortCfg();
+        FHSDK.getSerialPortConfig(PlayInfo.userID, SerialCfg);
+		SerialCfg.baudRate=115200;
+		FHSDK.setSerialPortConfig(PlayInfo.userID, SerialCfg);
+		FHSDK.sendSerial(serialHandle, sendData1, sendData1.length);
+
 	}
 
 	private View.OnClickListener btnEyeTypeClickListener = new View.OnClickListener() {
@@ -1004,8 +1041,10 @@ public class VideoPlayView {
 			{
 				str = (String)mContext.getText(R.string.id_remoteRec) + (String)mContext.getText(R.string.id_stop);
 				FHSDK.stopRemoteRecord(PlayInfo.userID);
+				showChronometer(false);
 				//ActivtyUtil.openToast(mContext,str);
 				btnRemoteRec.setBackgroundResource(R.drawable.btn_remote_rec_off);
+
 			}
 			else
 			{
@@ -1013,16 +1052,33 @@ public class VideoPlayView {
 				{
 					str = (String)mContext.getText(R.string.id_remoteRec) + (String)mContext.getText(R.string.id_start);
 					btnRemoteRec.setBackgroundResource(R.drawable.btn_remote_rec_on);
+					showChronometer(true);
 				}
 				else
 				{
 					str = (String)mContext.getText(R.string.id_remoteRec) + (String)mContext.getText(R.string.id_fail);
+					showChronometer(false);
 				}
 			}
 			ActivtyUtil.openToast(mContext,str);
 		}
 	};
 
+	/**
+	 * 显示或者隐藏Chronometer
+	 * @param bShow 显示开关
+	 */
+	private void showChronometer(boolean bShow) {
+		if (bShow) {
+			mChronometer.setVisibility(View.VISIBLE);
+			mChronometer.setBase(SystemClock.elapsedRealtime());
+			mChronometer.start();
+		} else {
+			mChronometer.stop();
+			mChronometer.setVisibility(View.INVISIBLE);
+			mChronometer.setText("");
+		}
+	}
 	private View.OnClickListener btnRemoteShotSetListener = new View.OnClickListener(){
 		public void onClick(View v) {
 			String str = (String)mContext.getText(R.string.id_remoteShot);
@@ -1034,6 +1090,14 @@ public class VideoPlayView {
 			ActivtyUtil.openToast(mContext,str);
 		}
 	};
+	private static String getCurrentDay() {
+
+
+		String time =  new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date().getTime());
+
+
+		return time;
+	}
 	public static String getSDCardPath() {
 		String sdcard_path = null;
 		String sd_default = Environment.getExternalStorageDirectory()
@@ -1138,26 +1202,49 @@ public class VideoPlayView {
 	private View.OnClickListener btnLocateShotSetListener = new View.OnClickListener(){
 		public void onClick(View v) {
 
-			FHSDK.setShotOn();
+			//FHSDK.setShotOn();
 
+			String filename = getCurrentDay();
+			String filePath = Environment.getExternalStorageDirectory().getPath() + VideoPlayView.getSettingPath() +	filename+".jpeg";
+			String str = (String)mContext.getText(R.string.id_remoteShot);
+			if(FHSDK.shot(PlayInfo.userID, filePath, true))
+				str += (String)mContext.getText(R.string.id_success);
+			else
+				str += (String)mContext.getText(R.string.id_fail);
 
+			ActivtyUtil.openToast(mContext,str);
 
 		}
 	};
+
+	boolean isreturn = false;
 	private View.OnClickListener btnAudioSetListener = new View.OnClickListener(){
 		public void onClick(View v) {
-			String str = null;
-			isAudioOpened = FHSDK.getRealAudioState();
-			if (isAudioOpened)
-			{
-				FHSDK.closeAudio(audioType[0]);
-				btnAudio.setBackgroundResource(R.drawable.btn_a_on);
+//			String str = null;
+//			isAudioOpened = FHSDK.getRealAudioState();
+//			if (isAudioOpened)
+//			{
+//				FHSDK.closeAudio(audioType[0]);
+//				btnAudio.setBackgroundResource(R.drawable.btn_a_on);
+//			}
+//			else
+//			{
+//				FHSDK.openAudio(audioType[0]);
+//				btnAudio.setBackgroundResource(R.drawable.btn_a_off);
+//			}
+
+			//更改成翻转
+
+			if(!isreturn) {
+				FHSDK.mirrorCtrl(PlayInfo.userID, 3);
+				isreturn = true;
 			}
 			else
 			{
-				FHSDK.openAudio(audioType[0]);
-				btnAudio.setBackgroundResource(R.drawable.btn_a_off);
+				FHSDK.mirrorCtrl(PlayInfo.userID, 0);
+				isreturn = false;
 			}
+
 		}
 	};
 	private View.OnClickListener btnTalkSetListener = new View.OnClickListener(){
@@ -1265,9 +1352,24 @@ public class VideoPlayView {
 		public int SerialDataCallBack(int serialHandle, byte[] buffer, int bufferLen){
 			Log.e("xxx","serialHandle = " + serialHandle + "| len = " + bufferLen);
 			//ActivtyUtil.openToast(mContext, "" + buffer);
+			 Log.d("VideoPlayView", "buffer:" + bytes2hex(buffer) );
 			return 0;
 		}
 	};
+	public static String bytes2hex(byte[] bytes) {
+		StringBuilder sb = new StringBuilder();
+		String tmp = null;
+		for (byte b : bytes) {
+			// 将每个字节与0xFF进行与运算，然后转化为10进制，然后借助于Integer再转化为16进制
+			tmp = Integer.toHexString(0xFF & b);
+			if (tmp.length() == 1) {
+				tmp = "0" + tmp;
+			}
+			sb.append(" ");   // 这里加空格是为了看清每个数组，分开。美观
+			sb.append(tmp);
+		}
+		return sb.toString();
+	}
 	private View.OnClickListener OnSerialSendClickLister = new View.OnClickListener(){
 		@Override
 		public void onClick(View v) {

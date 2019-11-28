@@ -38,6 +38,8 @@ public class VideoPlayByOpengl extends OpenglActivity {
 		mPreviewView = new VideoPlayView(this);
 		mPreviewView.layoutInit(this.mLayout);
 
+		mPreviewView.senddata("11223344556677889900");
+
 		playInit();
 
 	}
