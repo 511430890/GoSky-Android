@@ -41,6 +41,7 @@ import android.widget.Toast;
 import com.jiangdg.usbcamera.UVCCameraHelper;
 import com.serenegiant.usb.CameraDialog;
 import com.serenegiant.usb.USBMonitor;
+import com.serenegiant.usb.UVCCamera;
 import com.serenegiant.usb.widget.CameraViewInterface;
 
 import java.io.File;
@@ -134,7 +135,9 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
     private TrackView mTrackView;
     // 声控
     @BindView(R.id.control_panel_voice_guide_textView)  TextView mVoiceGuideTextView;
+    @BindView(R.id.zoom)  TextView TVzoom;
     private Timer mVoiceControlTimer;
+
 
     // 设备占用
     @BindString(R.string.control_panel_device_in_use)
@@ -448,7 +451,7 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
         mUVCCameraView = (CameraViewInterface) mTextureView;
         mUVCCameraView.setCallback(this);
         mCameraHelper = UVCCameraHelper.getInstance();
-        mCameraHelper.setDefaultPreviewSize(1280,720);
+     //   mCameraHelper.setDefaultPreviewSize(1280,720);
         mCameraHelper.setDefaultFrameFormat(UVCCameraHelper.FRAME_FORMAT_MJPEG);
         //以上2个参数一定要在 initUSB之前。 但是总是第二次进去报错
         mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
@@ -1419,6 +1422,23 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
         });
     }
 
+    private Handler Zoomhandler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+           // super.handleMessage(msg);
+            int what = msg.what;
+            TVzoom.bringToFront();
+            if(what!=0) {
+                TVzoom.setText(String.valueOf(what));
+            }
+            else  TVzoom.setText("无法获取");
+
+
+        }
+    };
+
+
     // USB camara
     private UVCCameraHelper.OnMyDevConnectListener listener = new UVCCameraHelper.OnMyDevConnectListener() {
 
@@ -1465,12 +1485,26 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
                         }
                         Looper.prepare();
                         if(mCameraHelper != null && mCameraHelper.isCameraOpened()) {
-                            //mSeekBrightness.setProgress(mCameraHelper.getModelValue(UVCCameraHelper.MODE_BRIGHTNESS));
+                           // mSeekBrightness.setProgress(mCameraHelper.getModelValue(UVCCameraHelper.MODE_BRIGHTNESS));
                            // mSeekContrast.setProgress(mCameraHelper.getModelValue(UVCCameraHelper.MODE_CONTRAST));
+
+
                         }
                         Looper.loop();
                     }
                 }).start();
+             //   UVCCamera.updateCameraParams();
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Message message = new Message();
+                        if(mCameraHelper != null && mCameraHelper.isCameraOpened()) {
+                        message.what = mCameraHelper.getZoomModelValue();
+                        Log.i(TAG, "==========================run: %d-----"+mCameraHelper.getZoomModelValue());
+                        Zoomhandler.sendMessage(message);}
+                    }
+                },2220,1000);
             }
         }
 
@@ -1959,6 +1993,12 @@ public class ControlPanelActivity extends AppCompatActivity implements FlyContro
         }
 
         return permissionCheck == PackageManager.PERMISSION_GRANTED;
+
+
+
+
+
+
     }
 
     /**

@@ -313,6 +313,18 @@ public abstract class AbstractUVCCameraHandler extends Handler {
         throw new IllegalStateException();
     }
 
+    public int getZoomValue() {
+        checkReleased();
+        final CameraThread thread = mWeakThread.get();
+        final UVCCamera camera = thread != null ? thread.mUVCCamera : null;
+        if (camera != null) {
+                return camera.getZoom();
+        }
+        throw new IllegalStateException();
+    }
+
+
+
     public int setValue(final int flag, final int value) {
         checkReleased();
         final CameraThread thread = mWeakThread.get();

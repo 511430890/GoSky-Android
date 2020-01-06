@@ -289,4 +289,14 @@
         android:textSize="20sp"
         android:textColor="@color/Red"/>
 
+    <TextView
+        android:id="@+id/zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+      android:layout_below="@+id/control_panel_voice_guide_textView"
+        android:textColor="@color/Red"/>
+
+
 </RelativeLayout>

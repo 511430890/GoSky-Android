@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -176,6 +177,7 @@ public class VideoPlayView  {
 	private IndicatorView indicatorView;
 	public Define myDefine;
 	Define.SerialPortCfg SerialCfg;
+	Define.DeviceTime deviceTime;
 	public VideoPlayView(Context mContext){
 		this.mContext =  mContext;
 	}
@@ -1037,6 +1039,7 @@ public class VideoPlayView  {
 	private View.OnClickListener btnRemoteRecSetListener = new View.OnClickListener(){
 		public void onClick(View v) {
 			String str = null;
+			setTFtime();
 			if (FHSDK.getRemoteRecordState(PlayInfo.userID))
 			{
 				str = (String)mContext.getText(R.string.id_remoteRec) + (String)mContext.getText(R.string.id_stop);
@@ -1063,7 +1066,23 @@ public class VideoPlayView  {
 			ActivtyUtil.openToast(mContext,str);
 		}
 	};
+	private void setTFtime() {
+		myDefine = new Define();
+		deviceTime =  myDefine.new DeviceTime();
 
+		FHSDK.getDeviceTime(PlayInfo.userID,deviceTime);
+		if(deviceTime.year ==2000)
+		{
+			deviceTime.year = Calendar.getInstance().get(Calendar.YEAR);
+			deviceTime.month = Calendar.getInstance().get(Calendar.MONTH)+1;
+			deviceTime.day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+			deviceTime.hour = Calendar.getInstance().get(Calendar.HOUR);
+			deviceTime.minute =Calendar.getInstance().get(Calendar.MINUTE);
+			deviceTime.second = Calendar.getInstance().get(Calendar.SECOND);
+			FHSDK.setDeviceTime(PlayInfo.userID,deviceTime);
+		}
+
+	}
 	/**
 	 * 显示或者隐藏Chronometer
 	 * @param bShow 显示开关

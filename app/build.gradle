@@ -80,4 +80,7 @@ dependencies {
     all64Implementation project(':ijkplayer-x86_64')
     implementation project(':libusbcamera')
     implementation project(':FHapp')
+   // implementation 'com.netopsun.opencvapi:gesturerecognition:1.0.0'
+   // implementation 'com.netopsun.devices:mr100devices:1.0.6'
+   // implementation 'com.netopsun.ijkvideoview:ijkvideoview:1.1.7'
 }

@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UVCCamera {
-	private static final boolean DEBUG = false;	// TODO set false when releasing
+	private static final boolean DEBUG = true;	// TODO set false when releasing
 	private static final String TAG = UVCCamera.class.getSimpleName();
 	private static final String DEFAULT_USBFS = "/dev/bus/usb";
 
@@ -908,6 +908,29 @@ public class UVCCamera {
 	public synchronized int getZoom() {
     	return getZoom(nativeGetZoom(mNativePtr));
     }
+//	public synchronized float  getPan() {
+//	//	return (float) getPan(nativeGetPan(mNativePtr));
+//	}
+
+	public synchronized int getTilt(int i) {
+		return getTilt(nativeGetTilt(mNativePtr));
+	}
+
+	/**
+	 * 获取陀螺仪数据，xyz数据分别放在Pan/Title/Zoom中，数据是16bit，为有符号类型
+	 * @return
+	 */
+	public int[] getGyroscopeData() {
+		int[] xyz = new int[3];
+		if(mNativePtr == 0) return xyz;
+		xyz[0] = nativeGetPan(mNativePtr);
+		xyz[2] = nativeGetTilt(mNativePtr);
+		xyz[1] = nativeGetZoom(mNativePtr);
+		xyz[0] = (short)(xyz[0]/3600);//由于ptz原本用于云台控制，pan/tile的单位为角秒，所以pan/tile两个属性的值在一些uvc协议传输过程中会被乘以3600
+		xyz[2] = (short)(xyz[2]/3600);
+		xyz[1] = (short)xyz[1];
+		return xyz;
+	}
 
 	public synchronized void resetZoom() {
     	if (mNativePtr != 0) {
@@ -916,7 +939,7 @@ public class UVCCamera {
     }
 
 //================================================================================
-	public synchronized void updateCameraParams() {
+	public  synchronized void updateCameraParams() {
     	if (mNativePtr != 0) {
     		if ((mControlSupports == 0) || (mProcSupports == 0)) {
         		// サポートしている機能フラグを取得
@@ -1236,3 +1259,4 @@ public class UVCCamera {
     private static final native int nativeSetPrivacy(final long id_camera, final boolean privacy);
     private static final native int nativeGetPrivacy(final long id_camera);
 }
+ 

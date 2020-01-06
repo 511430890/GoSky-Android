@@ -204,6 +204,9 @@ public class UVCCameraHelper {
     public int getModelValue(final int flag) {
         return mCameraHandler != null ? mCameraHandler.getValue(flag) : 0;
     }
+    public int getZoomModelValue() {
+        return mCameraHandler != null ? mCameraHandler.getZoomValue() : 0;
+    }
 
     public int setModelValue(final int flag, final int value) {
         return mCameraHandler != null ? mCameraHandler.setValue(flag, value) : 0;

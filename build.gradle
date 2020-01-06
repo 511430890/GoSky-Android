@@ -23,9 +23,11 @@ buildscript {
 allprojects {
     repositories {
        // jcenter()
+      //  maven { url "http://192.168.1.2:8081/nexus/content/groups/public/" }
         maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
         maven { url "https://jitpack.io" }
         maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
+
         google()
         flatDir {
             dirs 'libs'
